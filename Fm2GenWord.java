@@ -63,6 +63,7 @@ public class Fm2GenWord extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+	//Sin librerías
 	String url = "D:\\prueba.doc";
 	String text = jTextArea1.getText();
 	File archivo = new File(url);
