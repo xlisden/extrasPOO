@@ -2,8 +2,10 @@ package wordJava;
 
 import java.awt.Desktop;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 
 public class Fm2GenWord extends javax.swing.JFrame {
 
@@ -61,9 +63,9 @@ public class Fm2GenWord extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-	String uri = "D:\\prueba.doc";
+	String url = "D:\\prueba.doc";
 	String text = jTextArea1.getText();
-	File archivo = new File(uri);
+	File archivo = new File(url);
 	PrintWriter escribir;
 	//si el archivo no existe
 	if (!archivo.exists()) {
@@ -78,14 +80,14 @@ public class Fm2GenWord extends javax.swing.JFrame {
 	    escribir = new PrintWriter(archivo, "utf-8");
 	    escribir.print(text);
 	    escribir.close();
-	} catch (Exception e) {
-	    System.out.println("no se puede escribir");
+	} catch (FileNotFoundException | UnsupportedEncodingException e) {
+	    System.out.println("no se puede escribir " + e.getMessage());
 	}
 	//abrir
-	File file = new File(uri);
+	File file = new File(url);
 	try {
 	    Desktop.getDesktop().open(file);
-	} catch (Exception e) {
+	} catch (IOException e) {
 	    System.out.println(" no se abre " + e.getMessage());
 	}
     }//GEN-LAST:event_jButton1ActionPerformed
